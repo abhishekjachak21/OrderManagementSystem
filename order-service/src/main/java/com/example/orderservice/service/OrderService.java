@@ -108,6 +108,16 @@ public class OrderService {
         return toResponse(finalOrder);
     }
 
+    public OrderResponse getOrder(Long id) {
+
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Order not found")
+                );
+
+        return toResponse(order);
+    }
+
     private OrderResponse toResponse(Order order) {
 
         return new OrderResponse(

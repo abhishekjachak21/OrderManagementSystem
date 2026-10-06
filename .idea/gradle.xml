@@ -13,6 +13,15 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cucumber-tests" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/cucumber-tests" />
+            <option value="$PROJECT_DIR$/cucumber-tests/cucumber-tests" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/order-service" />
         <option name="modules">
           <set>

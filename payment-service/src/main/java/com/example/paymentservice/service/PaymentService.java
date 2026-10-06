@@ -51,4 +51,19 @@ public class PaymentService {
                 saved.getTransactionId()
         );
     }
+
+    public PaymentResponse getPaymentByOrderId(Long orderId) {
+
+        Payment payment = paymentRepository.findByOrderId(orderId)
+                .orElseThrow(() -> new RuntimeException("Payment not found"));
+
+        return new PaymentResponse(
+                payment.getId(),
+                payment.getOrderId(),
+                payment.getAmount(),
+                payment.getStatus(),
+                payment.getTransactionId()
+        );
+    }
+
 }
