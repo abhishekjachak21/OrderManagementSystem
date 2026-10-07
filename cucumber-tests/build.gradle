@@ -33,4 +33,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+
+    systemProperty "cucumber.plugin",
+            "pretty,html:build/reports/cucumber.html"
+
+
 }
