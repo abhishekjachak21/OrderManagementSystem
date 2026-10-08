@@ -3,7 +3,8 @@ package com.example.tests.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+import com.example.tests.utils.JsonDataReader;
+import java.io.IOException;
 
 import java.util.Map;
 import io.restassured.http.ContentType;
@@ -23,13 +24,12 @@ public class OrderStepDefinitions {
 
 
     @Given("a product exists with {int} items in stock")
-    public void productExists(int quantity) {
+    public void productExists(int quantity) throws IOException {
 
-        Map<String, Object> request = Map.of(
-                "name", "Charger",
-                "price", 150,
-                "stock", quantity
-        );
+        Map<String, Object> request =
+                JsonDataReader.readJson("product.json");
+
+        request.put("stock", quantity);
 
         response =
                 given()
