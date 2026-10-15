@@ -1,0 +1,37 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: product-service
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: product-service
+
+  template:
+    metadata:
+      labels:
+        app: product-service
+
+    spec:
+      containers:
+        - name: product-service
+          image: product-service:v1
+          imagePullPolicy: Never
+
+          ports:
+            - containerPort: 8082
+
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://host.docker.internal:5432/product_db"
+
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "postgres"

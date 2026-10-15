@@ -15,7 +15,10 @@ public class PaymentClient {
 
     public PaymentClient(RestClient.Builder builder) {
         this.restClient = builder
-                .baseUrl("http://localhost:8083")
+                .baseUrl(System.getenv().getOrDefault(
+                        "PAYMENT_SERVICE_URL",
+                        "http://localhost:8083"
+                ))
                 .build();
     }
 

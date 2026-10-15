@@ -12,9 +12,13 @@ public class ProductClient {
 
     public ProductClient(RestClient.Builder builder) {
         this.restClient = builder
-                .baseUrl("http://localhost:8082")
+                .baseUrl(System.getenv().getOrDefault(
+                        "PRODUCT_SERVICE_URL",
+                        "http://localhost:8082"
+                ))
                 .build();
     }
+
 
     public ProductResponse getProduct(Long productId) {
 
